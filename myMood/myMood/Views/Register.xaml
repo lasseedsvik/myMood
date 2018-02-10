@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="myMood.Views.Register"
+             Icon="ic_tune_white_24dp.png"
+             Padding="10"
+             xmlns:viewModels="clr-namespace:myMood.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:RegisterViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout>
+                <Image Source="logo.png" Margin="20"></Image>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="110"></RowDefinition>
+                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="45"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                           
+                <DatePicker DateSelected="EntryDate_Selected" x:Name="EntryDate" Date="{Binding MoodEntry.EntryDate, Mode=TwoWay}" MinimumDate="{Binding LowerLimitDate}" MaximumDate="{Binding HighLimitDate}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"></DatePicker>
+
+                <Image Source="ic_local_hotel_black_24dp.png" Grid.Column="0" Grid.Row="1"></Image>
+                <Label Text="Sömn" VerticalOptions="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" />
+
+                <Slider x:Name="SliderSleep" Value="{Binding MoodEntry.Sleep, Mode=TwoWay}" Minimum="0" Maximum="5" VerticalOptions="Center" ValueChanged="SliderSleep_OnValueChanged" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"></Slider>
+                <Image x:Name="ImageSleep" Source="ic_sentiment_neutral_black_24dp.png" Grid.Column="2" Grid.Row="2" VerticalOptions="Center"></Image>
+                <Label x:Name="LabelSleep" Grid.Column="3" Grid.Row="2"></Label>
+
+                <Image Source="ic_directions_run_black_24dp.png" Grid.Column="0" Grid.Row="3"></Image>
+                <Label Text="Upplevd stress" VerticalOptions="Center" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"/>
+
+                <Slider x:Name="SliderStress" Value="{Binding MoodEntry.Stress, Mode=TwoWay}" Minimum="0" Maximum="5" ValueChanged="SliderStress_OnValueChanged" VerticalOptions="Center" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"></Slider>
+                <Image Source="ic_directions_run.png" Grid.Column="2" Grid.Row="4" VerticalOptions="Center"></Image>
+                <Image x:Name="ImageStress" Source="ic_sentiment_neutral_black_24dp.png" Grid.Column="2" Grid.Row="4" VerticalOptions="Center"></Image>
+                <Label x:Name="LabelStress" Grid.Column="3" Grid.Row="4"></Label>
+
+                <Image Source="ic_done_all_black_24dp.png" Grid.Column="0" Grid.Row="5"></Image>
+                <Label Text="Uppnådda mål"  VerticalOptions="Center" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"/>
+
+                <Slider x:Name="SliderAchivedGoals" Value="{Binding MoodEntry.AchivedGoals, Mode=TwoWay}" Minimum="0" Maximum="5" ValueChanged="SliderAchivedGoals_OnValueChanged" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"></Slider>
+                <Image x:Name="ImageAchivedGoals" Source="ic_sentiment_neutral_black_24dp.png" Grid.Column="2" Grid.Row="6" VerticalOptions="Center"></Image>
+                <Label x:Name="LabelAchivedGoals" Grid.Column="3" Grid.Row="6"></Label>
+
+                <Image Source="ic_mode_edit_black_24dp.png" Grid.Column="0" Grid.Row="7"></Image>
+                <Label Text="Kommentar" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"></Label>
+                <Editor  x:Name="Comment" Text="{Binding MoodEntry.Comment, Mode=TwoWay}" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="4">
+                </Editor>
+
+                <Button Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="9" Command="{Binding SaveEntry}" Text="Spara"></Button>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

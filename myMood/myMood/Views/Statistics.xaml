@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="myMood.Views.Statistics"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Icon="ic_multiline_chart_white_24dp.png"
+             xmlns:viewModels="clr-namespace:myMood.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:StatisticsViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140*"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="75"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <DatePicker DateSelected="ChartDateChanged" x:Name="ChartDatePicker" Date="{Binding ChartDate}" MinimumDate="{Binding MinLimitDate}" MaximumDate="{Binding MaxLimitDate}" Grid.Column="0" Grid.Row="0"></DatePicker>
+
+            <Label x:Name="LabelChartDate" Text="{Binding ChartDate, StringFormat='{0:d}'}" Grid.Row="0" Grid.Column="1" Margin="0,15,0,0"></Label>
+            <Label Text="-" Grid.Row="0" Grid.Column="2" Margin="0,15,0,0"></Label>
+            <Label x:Name="LabelChartDateTo" Text="{Binding ChartDateTo, StringFormat='{0:d}'}" Grid.Row="0" Grid.Column="3" Margin="0,15,5,0"></Label>
+
+            <Label Text="Sömn" Grid.ColumnSpan="4" Grid.Row="1" Margin="10, 0, 0, 0"></Label>
+            <microcharts:ChartView x:Name="Chart1" HeightRequest="250" WidthRequest="300" Grid.ColumnSpan="4" Grid.Row="2"/>
+
+            <Label Text="Stress" Grid.Row="3" Margin="10, 0, 0, 0"></Label>
+            <microcharts:ChartView x:Name="Chart2" HeightRequest="250" WidthRequest="300"  Grid.ColumnSpan="4" Grid.Row="4"/>
+
+            <Label Text="Uppnådda mål" Grid.Row="5" Margin="10, 0, 0, 0"></Label>
+            <microcharts:ChartView x:Name="Chart3" HeightRequest="250" WidthRequest="300"  Grid.ColumnSpan="4"  Grid.Row="6"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

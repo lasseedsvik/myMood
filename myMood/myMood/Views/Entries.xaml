@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="myMood.Views.Entries"
+             Icon="ic_view_headline_white_24dp.png"
+             xmlns:converters="clr-namespace:myMood.Helpers"
+             xmlns:viewModels="clr-namespace:myMood.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:EntriesViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TextToBoolConverter x:Key="TextToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView x:Name="EntriesList" ItemsSource="{Binding MoodEntries}" 
+              HasUnevenRows="True"
+              Margin="10">
+        <ListView.Header>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+                <Image Source="ic_date_range_black_24dp.png" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center"></Image>
+                <Image Source="ic_local_hotel_black_24dp.png" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"></Image>
+                <Image Source="ic_directions_run_black_24dp.png" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center"></Image>
+                <Image Source="ic_done_all_black_24dp.png" Grid.Column="3" Grid.Row="0" HorizontalOptions="Center"></Image>
+            </Grid>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding EntryDate, StringFormat='{0:d/M}'}" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding Sleep, StringFormat='{0:0.0}'}" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding Stress, StringFormat='{0:0.0}'}" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding AchivedGoals, StringFormat='{0:0.0}'}" Grid.Column="3" Grid.Row="0" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding Comment}" Grid.Column="0" Grid.ColumnSpan="4" IsVisible="{Binding Comment, Converter={StaticResource TextToBoolConverter}}" Grid.Row="1" Margin="10, 0, 10, 5"></Label>
+                    </Grid>                    
+                </ViewCell>                
+            </DataTemplate>            
+        </ListView.ItemTemplate>
+    </ListView>    
+</ContentPage>

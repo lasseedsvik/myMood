@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using myMood.Data;
+﻿using myMood.Models;
+using System;
 using System.ComponentModel;
-using myMood.Models;
+using Xamarin.Forms;
 
 namespace myMood.ViewModels
 {

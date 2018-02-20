@@ -1,7 +1,7 @@
-﻿using System.IO;
-using myMood.Data;
-using Xamarin.Forms;
+﻿using myMood.Data;
 using myMood.Droid.Data;
+using System.IO;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SQLite_Android))]
 namespace myMood.Droid.Data

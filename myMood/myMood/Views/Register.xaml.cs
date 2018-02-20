@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using myMood.Helpers;
+using myMood.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using myMood.Helpers;
-using myMood.ViewModels;
 
 namespace myMood.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Register : ContentPage
 	{
         private double StepValue = 0.1;

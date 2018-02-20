@@ -1,11 +1,9 @@
-﻿using SQLite;
+﻿using myMood.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using myMood.Models;
 
 namespace myMood.Data
 {

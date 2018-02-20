@@ -1,18 +1,12 @@
-﻿using myMood.Models;
+﻿using Microcharts;
+using myMood.Helpers;
+using myMood.ViewModels;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Microcharts.Forms;
-using SkiaSharp;
-using Microcharts;
 using Entry = Microcharts.Entry;
-using myMood.ViewModels;
-using myMood.Helpers;
 
 namespace myMood.Views
 {
@@ -103,8 +97,7 @@ namespace myMood.Views
             foreach (var e in entries)
             {
                 stressentries.Add(new Entry((float)e.Stress)
-                {
-                    Color = SKColor.Parse("#90D585"),
+                {                    Color = SKColor.Parse("#90D585"),
                     Label = FormatHelpers.FormatSliderValue(e.Stress, 0.1),
                     ValueLabel = e.EntryDate.ToString("d/M")
                 });

@@ -1,3 +1,3 @@
 # myMood
 
-Todo: Fix IPhone support
+Todo: Fix IPhone support. English language
